@@ -44,5 +44,34 @@
 				</div>
 			</div>
 		</div>
+
+		<script type="text/javascript">
+			/*
+
+			These functions have example usage for the word dataset.  Note that there is no
+			error handling yet, so it should be added before use in production.
+
+			*/
+
+			// returns an integer id for a given word (or null if it doesn't exist)
+			function getIdForWord(word) {
+				return wordToIdMap[word.trim().toLowerCase()];
+			}
+
+			// returns a list of words for a given id (or null if the id is invalid)
+			function getWordsById(id) {
+				return idToWordMap[id];
+			}
+
+			// returns a list of hypernyms (word ids) for a given word (or null if the word doesn't exist)
+			function getHypernymsForWord(word) {
+				return getHypernymsById(getIdForWord[word]);
+			}
+
+			// returns a list of hypernyms (word ids) for a given parent id (or null if the id is invalid)
+			function getHypernymsById(id) {
+				return hypernyms[id];
+			}
+		</script>
 	</body>
 </html>
