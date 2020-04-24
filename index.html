@@ -1,7 +1,14 @@
 <html>
 	<head>
 		<title>Mobile Friendly Poetry</title>
+
 		<link rel="stylesheet" type="text/css" href="style.css">
+
+		<!-- Normally bad practice to put scripts here, but they're loading asynchronously and we want them loading the dataset asap -->
+		<script src="define-objects.js" type="text/javascript"></script>
+		<script async src="synsets-1.js" type="text/javascript"></script>
+		<script async src="synsets-2.js" type="text/javascript"></script>
+		<script async src="hypernyms.js" type="text/javascript"></script>
 	</head>
 
 	<body>
@@ -37,8 +44,5 @@
 				</div>
 			</div>
 		</div>
-
-		<script src="synsets.js" type="text/javascript"></script>
-		<script src="hypernyms.js" type="text/javascript"></script>
 	</body>
 </html>
