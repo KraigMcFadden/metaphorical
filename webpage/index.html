@@ -1,44 +1,114 @@
 <html>
 	<head>
 		<title>Mobile Friendly Poetry</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<link rel="stylesheet" type="text/css" href="style.css">
+
+		<!-- Normally bad practice to put scripts here, but they're loading asynchronously and we want them loading the dataset asap -->
+		<script src="define-objects.js" type="text/javascript"></script>
+		<script async src="synsets-1.js" type="text/javascript"></script>
+		<script async src="synsets-2.js" type="text/javascript"></script>
+		<script async src="hypernyms.js" type="text/javascript"></script>
 	</head>
 
 	<body>
 		<div class="phone">
-			<div class="screen">
+			<div class="screen"> <div class="screen-padding">
 				<div class="contents">
 
-					<br> <br> <br>
+					<br> <br> <br> <br> <br> <br>
 
-					<span class="word"> Line <br> </span>
-					acting in conformity; "in line with"; "he got out of line"; "toe the line"
+					<span id="w0" class="word"> w0 <br> </span>
+					<span id="d0"> d0 </span>
 
+					<br> <br> <br> <br> <br> <br> <br> <br>
 					<br> <br> <br> <br> <br> <br> <br> <br>
 
 					<span class="word"> Is <br> </span>
 
 					<br> <br> <br> <br> <br> <br> <br> <br>
+					<br> <br> <br> <br> <br> <br> <br> <br>
 
-					<span class="word"> Running Away <br> </span>
-					the act of leaving (without permission) the place you are expected to be <br>
+					<span id="w1" class="word"> w1 <br> </span>
+					<span id="d1"> d1 <br> </span>
 
+					<br> <br> <br> <br> <br> <br> <br> <br>
 					<br> <br> <br> <br> <br> <br> <br> <br>
 
 					<span class="word"> Is <br> </span>
 
 					<br> <br> <br> <br> <br> <br> <br> <br>
+					<br> <br> <br> <br> <br> <br> <br> <br>
 
-					<span class="word"> Act <br> </span>
-					a manifestation of insincerity; "he put on quite an act for her benefit" <br>
+					<span id="w2" class="word"> w2 <br> </span>
+					<span id="d2"> d2 <br> </span>
 
-					<br> <br> <br>
+					<br> <br> <br> <br> <br> <br> <br> <br>
+					<br> <br> <br> <br> <br> <br> <br> <br>
+
+					<span class="word"> Is <br> </span>
+
+					<br> <br> <br> <br> <br> <br> <br> <br>
+					<br> <br> <br> <br> <br> <br> <br> <br>
+
+					<span id="w3" class="word"> w3 <br> </span>
+					<span id="d3"> d3 <br> </span>
+
+					<br> <br> <br> <br> <br> <br> <br> <br>
+					<br> <br> <br> <br> <br> <br> <br> <br>
+
+					<span class="word"> Is <br> </span>
+
+					<br> <br> <br> <br> <br> <br> <br> <br>
+					<br> <br> <br> <br> <br> <br> <br> <br>
+
+					<span id="w4" class="word"> w4 <br> </span>
+					<span id="d4"> d4 <br> </span>
+
+					<br> <br> <br> <br> <br> <br> <br> <br>
 
 				</div>
-			</div>
+			</div></div>
 		</div>
 
-		<script src="synsets.js" type="text/javascript"></script>
-		<script src="hypernyms.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			/*
+
+			These functions have example usage for the word dataset.  Note that there is no
+			error handling yet, so it should be added before use in production.
+
+			*/
+
+			// returns an integer id for a given word (or null if it doesn't exist)
+			function getIdForWord(word) {
+				return wordToIdMap[word.trim().toLowerCase()];
+			}
+
+			// returns a list of words for a given id (or null if the id is invalid)
+			function getWordsById(id) {
+				return idToWordMap[id];
+			}
+
+			// return a definition for a given id (or null if the id is invalid)
+			function getDefinitionById(id) {
+				return definitions[id];
+			}
+
+			// returns a list of hypernyms (word ids) for a given word (or null if the word doesn't exist)
+			function getHypernymsForWord(word) {
+				return getHypernymsById(getIdForWord[word]);
+			}
+
+			// returns a list of hypernyms (word ids) for a given child id (or null if the id is invalid)
+			function getHypernymsById(id) {
+				return hypernyms[id];
+			}
+
+			// returns a list of hyponyms (word ids) for a given parent id (or null if id is invalid)
+			function getHyponymsById(id) {
+				return hyponyms[id];
+			}
+		</script>
 	</body>
 </html>
