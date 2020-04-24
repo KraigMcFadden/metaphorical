@@ -17,9 +17,9 @@
 			<div class="screen"> <div class="screen-padding">
 				<div class="contents">
 
-					<br> <br> <br> <br> <br> <br>
+					<br> <br> <br> <br> <br> <br> <br> <br>
 
-					<span id="w0" class="word"> w0 <br> </span>
+					<span id="w0" class="word"> w0 </span> <br>
 					<span id="d0"> d0 </span>
 
 					<br> <br> <br> <br> <br> <br> <br> <br>
@@ -30,7 +30,7 @@
 					<br> <br> <br> <br> <br> <br> <br> <br>
 					<br> <br> <br> <br> <br> <br> <br> <br>
 
-					<span id="w1" class="word"> w1 <br> </span>
+					<span id="w1" class="word"> w1 </span> <br>
 					<span id="d1"> d1 <br> </span>
 
 					<br> <br> <br> <br> <br> <br> <br> <br>
@@ -41,7 +41,7 @@
 					<br> <br> <br> <br> <br> <br> <br> <br>
 					<br> <br> <br> <br> <br> <br> <br> <br>
 
-					<span id="w2" class="word"> w2 <br> </span>
+					<span id="w2" class="word"> w2 </span> <br>
 					<span id="d2"> d2 <br> </span>
 
 					<br> <br> <br> <br> <br> <br> <br> <br>
@@ -52,7 +52,7 @@
 					<br> <br> <br> <br> <br> <br> <br> <br>
 					<br> <br> <br> <br> <br> <br> <br> <br>
 
-					<span id="w3" class="word"> w3 <br> </span>
+					<span id="w3" class="word"> w3 </span> <br>
 					<span id="d3"> d3 <br> </span>
 
 					<br> <br> <br> <br> <br> <br> <br> <br>
@@ -63,7 +63,7 @@
 					<br> <br> <br> <br> <br> <br> <br> <br>
 					<br> <br> <br> <br> <br> <br> <br> <br>
 
-					<span id="w4" class="word"> w4 <br> </span>
+					<span id="w4" class="word"> w4 </span><br>
 					<span id="d4"> d4 <br> </span>
 
 					<br> <br> <br> <br> <br> <br> <br> <br>
@@ -126,9 +126,12 @@
 			}
 
 			// main function
-			function createMetaphor(firstWord='passion', numWords=5, numSteps=10, probToParent=0.5)
+			function createMetaphor(firstWord='passion', numWords=5,
+			numSteps=10, probToParent=0.5)
 			{
-				let firstWordID = getIdForWord(firstWord);
+				// let firstWordID = getIdForWord(firstWord);
+				let firstWordID = 12897
+				document.getElementById("w0").innerHTML = firstWordID;
 				document.getElementById("w0").innerHTML = firstWord;
 				document.getElementById("d0").innerHTML = getDefinitionById(firstWordID);
 				let currID = firstWordID;
