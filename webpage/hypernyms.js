@@ -82190,3 +82190,6 @@ h[82188] = [38053];
 h[82189] = [24225];
 h[82190] = [48079];
 h[82191] = [28790];
+
+console.log("hypernyms finished loading");
+isHypernymsFinished = true;

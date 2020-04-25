@@ -1,13 +1,14 @@
 /* mini names */
 const h = {};
-const ho = {};
 const w = {};
-const i = {};
 const d = [];
+
+let isSynsetsFinished = false;
+let isHypernymsFinished = false;
 
 /* readable names */
 const hypernyms = h;
-const hyponyms = ho;
-const wordToIdMap = w;
-const idToWordMap = i;
+const hyponyms = {};
+const wordToIdsMap = w;
+const idToWordsMap = {};
 const definitions = d;

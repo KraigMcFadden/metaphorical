@@ -7,9 +7,9 @@
 
 		<!-- Normally bad practice to put scripts here, but they're loading asynchronously and we want them loading the dataset asap -->
 		<script src="define-objects.js" type="text/javascript"></script>
-		<script async src="synsets-1.js" type="text/javascript"></script>
-		<script async src="synsets-2.js" type="text/javascript"></script>
+		<script async src="synsets.js" type="text/javascript"></script>
 		<script async src="hypernyms.js" type="text/javascript"></script>
+		<script async src="reverse-mapper.js" type="text/javascript"></script>
 	</head>
 
 	<body>
@@ -79,12 +79,12 @@
 
 			// returns an integer id for a given word (or null if it doesn't exist)
 			function getIdForWord(word) {
-				return wordToIdMap[word.trim().toLowerCase()];
+				return wordToIdsMap[word.trim().toLowerCase()];
 			}
 
 			// returns a list of words for a given id (or null if the id is invalid)
 			function getWordsById(id) {
-				return idToWordMap[id];
+				return idToWordsMap[id];
 			}
 
 			// return a definition for a given id (or null if the id is invalid)
@@ -94,7 +94,7 @@
 
 			// returns a list of hypernyms (word ids) for a given word (or null if the word doesn't exist)
 			function getHypernymsForWord(word) {
-				return getHypernymsById(getIdForWord[word]);
+				return getHypernymsById(getIdForWord(word));
 			}
 
 			// returns a list of hypernyms (word ids) for a given child id (or null if the id is invalid)
@@ -111,7 +111,7 @@
 			// returns -1 if no such parent exists
 			function findParent(currID) {
 				let currSynset = getHypernymsById(currID);
-				if (currSynset == null) return -1;
+				if (!currSynset) return -1;
 				let m = Math.round(Math.random() * currSynset.length);
 				currID = currSynset[m];
 			}
@@ -120,47 +120,51 @@
 			// returns -1 if no such child exists
 			function findChild(currID) {
 				let currSynset = getHyponymsById(currID);
-				if (currSynset == null) return -1;
+				if (!currSynset) return -1;
 				let m = Math.round(Math.random() * currSynset.length);
 				currID = currSynset[m];
 			}
 
 			// main function
-			function createMetaphor(firstWord='passion', numWords=5,
-			numSteps=10, probToParent=0.5)
-			{
-				// let firstWordID = getIdForWord(firstWord);
-				let firstWordID = 12897
+			function createMetaphor(firstWord='passion', numWords=5, numSteps=1, probToParent=1.0) {
+				//let firstWordID = getIdForWord(firstWord);
+				//console.log('firstWordID: ' + firstWordID);
+				let firstWordID = 12897;
+
 				document.getElementById("w0").innerHTML = firstWordID;
 				document.getElementById("w0").innerHTML = firstWord;
 				document.getElementById("d0").innerHTML = getDefinitionById(firstWordID);
+
 				let currID = firstWordID;
 				// write outer loop to get numWords # of words
 				for (i = 1; i < numWords; i++) {
 					// write inner loop to get numSteps # of steps
 					for (j = 0; j < numSteps; j++) {
-					// select random k between 0 and 1
-					let k = Math.random();
-					// find child and update ID
-					if (k > probToParent) {
-						let newID = findChild(currID);
-						if (newID < 0) newID = findParent(currID);
-						currID = newID;
-					} else { // find parent and update ID
-						let newID = findParent(currID);
-						if (newID < 0) newID = findChild(currID);
-						currID = newID;
+						// select random k between 0 and 1
+						let k = Math.random();
+						// find child and update ID
+						if (k > probToParent) {
+							let newID = findChild(currID);
+							if (newID < 0) newID = findParent(currID);
+							currID = newID;
+						} else { // find parent and update ID
+							let newID = findParent(currID);
+							if (newID < 0) newID = findChild(currID);
+							currID = newID;
 						}
+						console.log('currID: ' + currID);
 					}
-					// change inner HTML
-					let Words = getWordsById(currID);
-					let m = Math.round(Math.random() * Words.length);
-					let currWord = Words[m];
-					document.getElementById("w" + i).innerHTML = currWord
-					document.getElementById("d" + i).innerHTML = getDefinitionById(currID)
 				}
+
+				// change inner HTML
+				let words = getWordsById(currID);
+				const m = Math.round(Math.random() * words.length);
+				const currWord = words[m];
+				document.getElementById("w" + i).innerHTML = currWord
+				document.getElementById("d" + i).innerHTML = getDefinitionById(currID)
 			}
-			createMetaphor();
+
+			//createMetaphor();
 
 		</script>
 	</body>
