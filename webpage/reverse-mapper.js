@@ -17,7 +17,7 @@ async function reverseMap() {
 		await sleep(1000);
 	}
 
-	createMetaphor();
+	//createMetaphor();
 }
 
 async function sleep(milliseconds) {

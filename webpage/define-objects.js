@@ -1,7 +1,5 @@
 /* mini names */
 const h = {};
-const w = {};
-const d = [];
 
 let isSynsetsFinished = false;
 let isHypernymsFinished = false;
@@ -9,6 +7,6 @@ let isHypernymsFinished = false;
 /* readable names */
 const hypernyms = h;
 const hyponyms = {};
-const wordToIdsMap = w;
+const wordToIdsMap = Object.create(null);  // gotta do it this way to get rid of "constructor" default keyword
 const idToWordsMap = {};
-const definitions = d;
+const definitions = [];
