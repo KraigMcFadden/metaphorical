@@ -82192,4 +82192,14 @@ h[82190] = [48079];
 h[82191] = [28790];
 
 console.log("hypernyms finished loading");
-isHypernymsFinished = true;
+
+// hypernyms and hyponyms defined in define-objects.js - this is a reverse mapping of hypernyms to hyponyms
+for (const [childId, parentIds] of Object.entries(hypernyms)) {
+	for (const parentId of parentIds) {
+		hyponyms[parentId] = (hyponyms[parentId] || []);
+		hyponyms[parentId].push(childId);
+	}
+}
+hyponymsReverseMapped = true;
+
+console.log('hyponyms mapping finished');
