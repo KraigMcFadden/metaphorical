@@ -108,23 +108,32 @@
 			// randomly samples for a parent of current synset and returns the ID;
 			// returns -1 if no such parent exists
 			function findParent(currID) {
+				console.log("findParent(" + currID + ") called");
 				let currSynset = getHypernymsById(currID);
-				if (!currSynset) return -1;
-				let m = Math.round(Math.random() * currSynset.length);
+				console.log("currSynset: " + JSON.stringify(currSynset));
+				if (!currSynset || currSynset.length === 0) {
+					return -1;
+				}
+				let m = Math.floor(Math.random() * currSynset.length);
+				console.log("m: " + m);
 				currID = currSynset[m];
+				return currID;
 			}
 
 			// randomly samples for a child of current synset and returns the ID;
 			// returns -1 if no such child exists
 			function findChild(currID) {
 				let currSynset = getHyponymsById(currID);
-				if (!currSynset) return -1;
-				let m = Math.round(Math.random() * currSynset.length);
+				if (!currSynset || currSynset.length == 0) {
+					return -1;
+				}
+				let m = Math.floor(Math.random() * currSynset.length);
 				currID = currSynset[m];
+				return currID;
 			}
 
 			// main function
-			function createMetaphor(firstWord='passion', numWords=5, numSteps=10, probToParent=1.0) {
+			function createMetaphor(firstWord='passion', numWords=5, numSteps=10, probToParent=0.5) {
 				//let firstWordID = getIdForWord(firstWord);
 				//console.log('firstWordID: ' + firstWordID);
 				let firstWordID = 12897;
@@ -147,6 +156,7 @@
 							currID = newID;
 						} else { // find parent and update ID
 							let newID = findParent(currID);
+							console.log("newID: " + newID);
 							if (newID < 0) newID = findChild(currID);
 							currID = newID;
 						}
@@ -155,7 +165,7 @@
 
 					// change inner HTML
 					let words = getWordsById(currID);
-					const m = Math.round(Math.random() * words.length);
+					const m = Math.floor(Math.random() * words.length);
 					const currWord = words[m];
 					document.getElementById("w" + i).innerHTML = currWord
 					document.getElementById("d" + i).innerHTML = getDefinitionById(currID)
