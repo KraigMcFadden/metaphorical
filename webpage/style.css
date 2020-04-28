@@ -19,7 +19,7 @@ a:link, a:visited, a:hover, a:active {
 }
 
 .contents {
-    padding: 2rem;
+    padding: 1rem;
     overflow-y: auto;
     text-align: left;
     color: white;
@@ -39,16 +39,17 @@ a:link, a:visited, a:hover, a:active {
     position: fixed;
     right: 1rem;
     top: 1rem;
-    margin: 1rem;
+    background-color: rgba(201, 76, 76, 0);
 }
 
 button {
-    width: 5rem;
-    height: 5rem;
-    background-color: #FCD633;
+    width: 4rem;
+    height: 4rem;
+    background-color: #ffaa00;
     color: white;
-    font-size: 2rem;
+    font-size: 1rem;
     border-radius: 100%;
+    border: none;
     text-align: center;
 }
 
@@ -92,7 +93,7 @@ button {
         margin: auto;
         z-index: 100;
         right: 50%;
-        transform: translate(160px, 70px)   /* 4 */
+        transform: translate(180px, 70px)   /* 4 */
     }
 
 }
