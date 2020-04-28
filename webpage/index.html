@@ -75,6 +75,8 @@
 			</div>
 		</div>
 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 		<script src="define-objects.js" type="text/javascript"></script>
 		<script src="synsets.js" type="text/javascript"></script>
 		<script src="hypernyms.js" type="text/javascript"></script>
@@ -82,12 +84,14 @@
 
 		<script type="text/javascript">
 			// to hide or show definitions
-			$(document).ready(function(){
-			  $('defButton').click(function(){
-				$("definition").toggle();
-			  });
-			});
-			//
+			function toggleDefinitions() {
+				for (const element of document.querySelectorAll('.definition')) {
+				    element.style.display = element.style.display === 'none' ? 'inline' : 'none';
+				}
+			}
+			document.getElementById('defButton').addEventListener('click', toggleDefinitions);
+
+			// generate a new metaphor
 			function newMetaphors() {
 				createMetaphor();
 				this.window.scroll({

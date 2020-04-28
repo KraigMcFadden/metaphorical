@@ -30,11 +30,6 @@ a:link, a:visited, a:hover, a:active {
     font-size: 3rem;
 }
 
-.definition {
-    display: none;
-}
-
-
 .button-container {
     position: fixed;
     right: 1rem;
