@@ -9,9 +9,10 @@
 
 	<body>
 		<div class="button-container">
-			<button><i class="material-icons">autorenew</i></button>
+			<button onclick="newMetaphors();"><i class="material-icons">
+				autorenew</i></button>
 			<br><br>
-			<button><i class="material-icons">notes</i></button>
+			<button id="defButton"><i class="material-icons">notes</i></button>
 		</div>
 
 		<div class="phone">
@@ -81,7 +82,20 @@
 
 		<script type="text/javascript">
 			// to hide or show definitions
-
+			$(document).ready(function(){
+			  $('defButton').click(function(){
+				$("definition").toggle();
+			  });
+			});
+			//
+			function newMetaphors() {
+				createMetaphor();
+				this.window.scroll({
+				  top: 0,
+				  left: 0,
+				  behavior: 'smooth'
+				});
+			}
 
 			/* These functions have example usage for the word dataset.  Note that
 			there is no error handling yet, so it should be added before use in
