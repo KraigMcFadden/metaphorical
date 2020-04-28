@@ -2,19 +2,26 @@
 	<head>
 		<title>Mobile Friendly Poetry</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 
 	<body>
+		<div class="button-container">
+			<button><span class="glyphicon glyphicon-refresh"></span></button>
+			<br><br>
+			<button> DEF </button>
+		</div>
+
 		<div class="phone">
-			<div class="screen"> <div class="screen-padding">
+			<div class="screen">
+
 				<div class="contents">
 
 					<br> <br> <br> <br> <br> <br> <br> <br>
 
 					<span id="w0" class="word"> </span> <br>
-					<span id="d0"> </span>
+					<span id="d0" class="definition"> </span>
 
 					<br> <br> <br> <br> <br> <br> <br> <br>
 					<br> <br> <br> <br> <br> <br> <br> <br>
@@ -25,7 +32,7 @@
 					<br> <br> <br> <br> <br> <br> <br> <br>
 
 					<span id="w1" class="word"> </span> <br>
-					<span id="d1"> <br> </span>
+					<span id="d1" class="definition"> <br> </span>
 
 					<br> <br> <br> <br> <br> <br> <br> <br>
 					<br> <br> <br> <br> <br> <br> <br> <br>
@@ -36,7 +43,7 @@
 					<br> <br> <br> <br> <br> <br> <br> <br>
 
 					<span id="w2" class="word"> </span> <br>
-					<span id="d2"> <br> </span>
+					<span id="d2" class="definition"> <br> </span>
 
 					<br> <br> <br> <br> <br> <br> <br> <br>
 					<br> <br> <br> <br> <br> <br> <br> <br>
@@ -47,7 +54,7 @@
 					<br> <br> <br> <br> <br> <br> <br> <br>
 
 					<span id="w3" class="word"> </span> <br>
-					<span id="d3"> <br> </span>
+					<span id="d3" class="definition"> <br> </span>
 
 					<br> <br> <br> <br> <br> <br> <br> <br>
 					<br> <br> <br> <br> <br> <br> <br> <br>
@@ -58,19 +65,23 @@
 					<br> <br> <br> <br> <br> <br> <br> <br>
 
 					<span id="w4" class="word"> </span><br>
-					<span id="d4"> <br> </span>
+					<span id="d4" class="definition"> <br> </span>
 
 					<br> <br> <br> <br> <br> <br> <br> <br>
 
 				</div>
-			</div></div>
+			</div>
 		</div>
 
 		<script src="define-objects.js" type="text/javascript"></script>
 		<script src="synsets.js" type="text/javascript"></script>
 		<script src="hypernyms.js" type="text/javascript"></script>
 
+
 		<script type="text/javascript">
+			// to hide or show definitions
+
+
 			/* These functions have example usage for the word dataset.  Note that
 			there is no error handling yet, so it should be added before use in
 			production. */

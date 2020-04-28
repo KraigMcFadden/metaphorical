@@ -18,19 +18,48 @@ a:link, a:visited, a:hover, a:active {
   width: device-width ;
 }
 
+.phone {
+    width: 100%;
+}
+.screen {
+    width: 100%;
+}
 .contents {
-    margin: 1rem;
+    padding: 2rem;
     height: 100%;
-    overflow: auto;
+    width: 100%;
+    overflow-y: auto;
     text-align: left;
     color: white;
     font-size: 2rem;
 }
 
 .word {
-
-    font-size: 4rem;
+    font-size: 3rem;
 }
+
+.definition {
+    display: none;
+}
+
+
+.button-container {
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    margin: 1rem;
+}
+
+button {
+    width: 5rem;
+    height: 5rem;
+    background-color: #FCD633;
+    color: white;
+    font-size: 2rem;
+    border-radius: 100%;
+    text-align: center;
+}
+
 
 /* Computer style, above 768px (iPad portrait mode) */
 @media screen and (min-width:769px) {
@@ -54,11 +83,6 @@ a:link, a:visited, a:hover, a:active {
         border: 2px solid gray;
     }
 
-    .screen-padding {
-        /* border: 2px solid red; */
-        width: 90%;
-        margin: auto;
-    }
     .contents {
         margin: 0;
         height: 100%;
@@ -68,21 +92,16 @@ a:link, a:visited, a:hover, a:active {
         font-size: 2rem;
     }
     .word {
-
         font-size: 4rem;
     }
 
-    img {
-
-        width: 335px;
-        margin: 10px 10px 10px 10px;
-
+    .button-container {
+        position: fixed;
+        width: 5rem;
+        margin: auto;
+        z-index: 100;
+        right: 50%;
+        transform: translate(160px, 70px)   /* 4 */
     }
 
-    .button {
-        background-color: #ffff99;
-        color: black;
-        text-shadow: 2px 2px white;
-        font-size: 3rem;
-    }
 }
