@@ -53,6 +53,10 @@ button {
     text-align: center;
 }
 
+i {
+    color: white;
+    background-color: rgba(201, 76, 76, 0);
+}
 
 /* Computer style, above 768px (iPad portrait mode) */
 @media screen and (min-width:769px) {
@@ -77,7 +81,7 @@ button {
     }
 
     .contents {
-        height: 88%;
+        height: 94%;
         overflow: auto;
         text-align: left;
         color: white;
