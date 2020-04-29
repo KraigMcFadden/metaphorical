@@ -33,7 +33,7 @@ a:link, a:visited, a:hover, a:active {
 .button-container {
     position: fixed;
     right: 1rem;
-    top: 1rem;
+    top: 2rem;
     background-color: rgba(201, 76, 76, 0);
 }
 
@@ -50,6 +50,16 @@ button {
 
 i {
     color: white;
+    background-color: rgba(201, 76, 76, 0);
+}
+
+.description {
+    width: 80%;
+    position: relative;
+    display: inline-block;
+    margin: auto;
+    font-size: 1.5rem;
+    color: gray;
     background-color: rgba(201, 76, 76, 0);
 }
 
@@ -90,7 +100,7 @@ i {
         position: fixed;
         width: 5rem;
         margin: auto;
-        z-index: 100;
+        z-index: 1;
         right: 50%;
         transform: translate(180px, 70px)   /* 4 */
     }

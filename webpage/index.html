@@ -8,19 +8,24 @@
 	</head>
 
 	<body>
-		<div class="button-container">
-			<button onclick="newMetaphors();"><i class="material-icons">
-				autorenew</i></button>
-			<br><br>
-			<button id="defButton"><i class="material-icons">notes</i></button>
-		</div>
 
 		<div class="phone">
 			<div class="screen">
+				<div class="button-container">
+					<button onclick="newMetaphors();"><i class="material-icons">
+					autorenew</i></button>
+					<br><br>
+				<button id="defButton"><i class="material-icons">notes</i></button>
+				</div>
 
 				<div class="contents">
-
-					<br> <br> <br> <br> <br> <br> <br> <br>
+					<div class="description">
+						<span>
+						This is metaphorical 1.0, a form of poetry suited to
+							small screens. Scroll to read the poem.
+						</span>
+					</div>
+					<br> <br> <br>
 
 					<span id="w0" class="word"> </span> <br>
 					<span id="d0" class="definition"> </span>
@@ -93,7 +98,12 @@
 
 			// generate a new metaphor
 			function newMetaphors() {
-				createMetaphor();
+
+				const NUM_SYNSETS = 82191;
+				let firstWordID = Math.floor(Math.random() * NUM_SYNSETS);
+				console.log('firstWordID: ' + firstWordID);
+
+				createMetaphor(firstWordID);
 				this.window.scroll({
 				  top: 0,
 				  left: 0,
@@ -163,12 +173,13 @@
 			}
 
 			// main function
-			function createMetaphor(firstWord='passion', numWords=5, numSteps=10, probToParent=0.5) {
-				//let firstWordID = getIdForWord(firstWord);
+			function createMetaphor(firstWordID=12897, numWords=5, numSteps=10, probToParent=0.5) {
 				//console.log('firstWordID: ' + firstWordID);
-				let firstWordID = 12897;
 
-				document.getElementById("w0").innerHTML = firstWordID;
+				let firstWordList = getWordsById(firstWordID);
+				let firstWord = firstWordList[Math.floor(Math.random() * firstWordList.length)];
+				console.log('firstWord: ' + firstWord);
+
 				document.getElementById("w0").innerHTML = firstWord;
 				document.getElementById("d0").innerHTML = getDefinitionById(firstWordID);
 
@@ -202,7 +213,12 @@
 				}
 			}
 
-			createMetaphor();
+
+			const NUM_SYNSETS = 82191;
+			let firstWordID = Math.floor(Math.random() * NUM_SYNSETS);
+			console.log('firstWordID: ' + firstWordID);
+
+			createMetaphor(firstWordID);
 
 		</script>
 	</body>
